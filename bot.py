@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 from config3 import TOKEN
-from dodo import main
+from dodo import get_data
 
 
 bot = telebot.TeleBot(TOKEN)
@@ -19,9 +19,16 @@ def start(message):
 def echo(message):
     get_message = message.text
     if get_message == 'Dodo Pizza':
-        text = main()
-        bot.send_message(message.chat.id, text = text)
+        sales_list = get_data()
+        markup = types.InlineKeyboardMarkup(row_width = 4)
+        for sale in sales_list:
+            bot.send_message(message.chat.id, sale['title'])
+            item = types.InlineKeyboardButton
+            
 
+@bot.callback_query_handler(func = lambda call: True)
+def callback_inline(call):
+    if call.message
 
 
 
