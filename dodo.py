@@ -11,11 +11,22 @@ def get_data(html):
     soup = BeautifulSoup(html, 'html.parser')
     divs = soup.find('main', class_='sc-1cc6vxk-2 eh81ri-0 bGeGUs bshVwl')
     title = divs.find_all('article')
+    print(divs)
+    print(title)
+    sales_list = []
     for item in title:
         annouth = item.find('h1', class_='title').text
         description = item.find('p').text
-        print(annouth)
-        print(description)
+        sales_list.append({
+            "title":annouth,
+            "description": description,
+        })
+        # print(annouth) 
+        # print(description)
+
+    return sales_list
+
+        
 
 def main():
     html="https://dodopizza.kg/bishkek/bonusactions?gclid=CjwKCAjwoP6LBhBlEiwAvCcthAUVJjnicBju7HmNCXZhEHrfeBBXahyQDGR1XR09HnMj1BSxd5zHchoCYTQQAvD_BwE"
@@ -24,5 +35,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
