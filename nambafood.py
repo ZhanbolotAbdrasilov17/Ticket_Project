@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 #     return response.text
 
 def make_requests():
-    html="https://dodopizza.kg/bishkek/bonusactions?gclid=CjwKCAjwoP6LBhBlEiwAvCcthAUVJjnicBju7HmNCXZhEHrfeBBXahyQDGR1XR09HnMj1BSxd5zHchoCYTQQAvD_BwE"
+    html="https://nambafood.kg/bonus"
     r = requests.get(html)
     return r.content
 
@@ -15,18 +15,23 @@ def make_requests():
 def get_data():
     html = make_requests()
     soup = BeautifulSoup(html, 'html.parser')
-    divs = soup.find('main', class_='sc-1cc6vxk-2 eh81ri-0 bGeGUs bshVwl')
-    title = divs.find_all('article')
+    divs = soup.find('div', class_='catalog-content')
+    title = divs.find_all('a', class_='cafe-item')
+   
+    # print(divs, title)
     sales_list = []
+
+
+
     for item in title:
-        annouth = item.find('h1', class_='title').text
-        description = item.find('p').text
+        annouth = item.find('div', class_='cafe-item--wrap').get_text(strip=True)
+        # description = item.find('div', class_='information').get_text(strip=True)
         sales_list.append({
             "title":annouth,
-            "description": description,
+            # "description": description,
         })
         # print(annouth) 
-        # print(description)
+        # # print(description)
     print(sales_list)
-get_data()
+print(get_data())
     # return sales_list
