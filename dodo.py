@@ -18,15 +18,17 @@ def get_data():
     divs = soup.find('main', class_='sc-1cc6vxk-2 eh81ri-0 bGeGUs bshVwl')
     title = divs.find_all('article')
     sales_list = []
-    for item in title:
-        annouth = item.find('h1', class_='title').text
-        description = item.find('p').text
+    for item in enumerate(title):
+        annouth = item[1].find('h1', class_='title').text
+        description = item[1].find('p').text
         sales_list.append({
             "title":annouth,
             "description": description,
+            "number":item[0]
         })
-        # print(annouth) 
-        # print(description)
-    print(sales_list)
-get_data()
-    # return sales_list
+    return sales_list
+#     print(sales_list[:]['title'])
+# get_data()
+
+
+
