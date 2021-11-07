@@ -1,1 +1,0 @@
-photo = open('Media/weather.jpeg', 'rb')
