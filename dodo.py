@@ -22,6 +22,9 @@ def get_data():
     sales_list = []
     title_list = []
     description_list = []
+    photo_list_1 = open('dodo.jpeg', 'rb')
+    photo_list_2 = open('dodopizza.jpeg', 'rb')
+    
     for item in enumerate(title, 1):
         annouth = item[1].find('h1', class_='title').text
         description = item[1].find('p').text
@@ -31,6 +34,8 @@ def get_data():
         description_list.append(description)
     sales_list.append(title_list)
     sales_list.append(description_list)
+    sales_list.append(photo_list_1)
+    sales_list.append(photo_list_2)
 
     return sales_list
 
