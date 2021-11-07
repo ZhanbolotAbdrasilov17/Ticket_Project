@@ -12,26 +12,23 @@ def make_requests():
     return r.content
 
 
-def get_data():
+def get_data_4():
     html = make_requests()
     soup = BeautifulSoup(html, 'html.parser')
     divs = soup.find('div', class_='catalog-content')
     title = divs.find_all('a', class_='cafe-item')
-   
-    # print(divs, title)
     sales_list = []
+    title_list = []
+    photo_list_1 = open('logonambafood.jpeg', 'rb')
+    photo_list_2 = open('food.jpеg', 'rb')
+    
+    for item in enumerate(title):
+        annouth = item[1].find('div', class_='cafe-item--wrap').get_text(strip=True)
+        title_list.append(str(item[0]))
+        title_list.append(annouth)
 
+    sales_list.append(title_list)
+    sales_list.append(photo_list_1)
+    sales_list.append(photo_list_2)
 
-
-    for item in title:
-        annouth = item.find('div', class_='cafe-item--wrap').get_text(strip=True)
-        # description = item.find('div', class_='information').get_text(strip=True)
-        sales_list.append({
-            "title":annouth,
-            # "description": description,
-        })
-        # print(annouth) 
-        # # print(description)
-    print(sales_list)
-print(get_data())
-    # return sales_list
+    return sales_list
