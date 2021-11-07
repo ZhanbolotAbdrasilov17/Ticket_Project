@@ -22,13 +22,14 @@ def get_data_2():
     description_list = []
     photo_list_1 = open('logokfc.jpeg', 'rb')
     photo_list_2 = open('kfc.jpeg', 'rb')
+
     for item in enumerate(title, 1):
         annouth = item[1].find('h2', class_='title').text
         description = item[1].find('p',).text
-        title_list.append(str(item[0]))
-        title_list.append(annouth)
-        description_list.append(str(item[0]))
-        description_list.append(description)
+        full_title = f"{str(item[0])}. " + annouth
+        title_list.append(full_title)
+        full_description = f"{str(item[0])}. " + description
+        description_list.append(full_description)
     sales_list.append(title_list)
     sales_list.append(description_list)
     sales_list.append(photo_list_1)

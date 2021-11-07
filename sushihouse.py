@@ -23,10 +23,10 @@ def get_data():
     for item in enumerate(items):
 
         all_info = item[1].find_all('div', class_ = 'widget-text')
-        data["title"] = all_info[0].text
-        data["body"] = all_info[1].text
-        data["price"] = all_info[2].text
-        data['number'] = item[0]
+        data["title"] = f"{str(all_info[0].text)}"
+        data["body"] = f"{str(all_info[1].text)}"
+        data["price"] = f"{str(all_info[2].text)}"
+        data['number'] = f"{str(item[0])}"
     data.append(photo_list_1)
     data.append(photo_list_2)    
     

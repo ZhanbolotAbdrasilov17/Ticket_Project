@@ -22,10 +22,10 @@ def get_data1():
     for item in enumerate(title, 1):
         annouth = item[1].find('div', class_='c-article__title').text
         description = item[1].find('div', class_='c-article__text').text
-        title_list.append(str(item[0]))
-        title_list.append(annouth)
-        description_list.append(str(item[0]))
-        description_list.append(description)
+        full_title = f"{str(item[0])}. "+annouth
+        title_list.append(full_title)
+        full_description = f"{str(item[0])}. " + description
+        description_list.append(full_description)
     sales_list.append(title_list)
     sales_list.append(description_list)
     sales_list.append(photo_list_1)
