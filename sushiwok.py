@@ -20,6 +20,8 @@ def get_data_3():
     sales_list = []
     title_list = []
     description_list = []
+    photo_list_1 = open('logosushiwok.jpeg', 'rb')
+    photo_list_2 = open('sushiwok.jpeg', 'rb')
     for item in enumerate(title, 1):
         annouth = item[1].find('span', class_='stock-title').text
         description = item[1].find('div', class_='descr-container').text
@@ -29,4 +31,6 @@ def get_data_3():
         description_list.append(description)
     sales_list.append(title_list)
     sales_list.append(description_list)
+    sales_list.append(photo_list_1)
+    sales_list.append(photo_list_2)
     return sales_list

@@ -19,6 +19,8 @@ def get_data_4():
     title = divs.find_all('a', class_='cafe-item')
     sales_list = []
     title_list = []
+    photo_list_1 = open('logonambafood.jpeg', 'rb')
+    photo_list_2 = open('food.jpеg', 'rb')
     
     for item in enumerate(title):
         annouth = item[1].find('div', class_='cafe-item--wrap').get_text(strip=True)
@@ -26,5 +28,7 @@ def get_data_4():
         title_list.append(annouth)
 
     sales_list.append(title_list)
+    sales_list.append(photo_list_1)
+    sales_list.append(photo_list_2)
 
     return sales_list
