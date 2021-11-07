@@ -1,8 +1,8 @@
+
 import requests
 from bs4 import BeautifulSoup
 
 from imperia import get_data1
-
 
 # def get_html(url):
 #     response = requests.get(url)
@@ -31,4 +31,7 @@ def get_data():
         description_list.append(description)
     sales_list.append(title_list)
     sales_list.append(description_list)
+
     return sales_list
+
+
