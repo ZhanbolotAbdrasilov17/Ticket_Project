@@ -18,11 +18,14 @@ def get_data():
     soup = BeautifulSoup(html, 'html.parser')
     divs = soup.find('div', {"id":"комбо"})
     items = divs.find('div', class_ = 's-elements-grid').find_all('div', 's-elements-grid__cell')
-    for item in items:
-        all_info = item.find_all('div', class_ = 'widget-text')
+    for item in enumerate(items):
+
+        all_info = item[1].find_all('div', class_ = 'widget-text')
         data["title"] = all_info[0].text
         data["body"] = all_info[1].text
         data["price"] = all_info[2].text
+        data['number'] = item[0]
         print(data)
+    
 
-#     # return sales_list
+    return data

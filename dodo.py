@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+from imperia import get_data1
+
 
 # def get_html(url):
 #     response = requests.get(url)
@@ -18,17 +20,15 @@ def get_data():
     divs = soup.find('main', class_='sc-1cc6vxk-2 eh81ri-0 bGeGUs bshVwl')
     title = divs.find_all('article')
     sales_list = []
-    for item in enumerate(title):
+    title_list = []
+    description_list = []
+    for item in enumerate(title, 1):
         annouth = item[1].find('h1', class_='title').text
         description = item[1].find('p').text
-        sales_list.append({
-            "title":annouth,
-            "description": description,
-            "number":item[0]
-        })
+        title_list.append(str(item[0]))
+        title_list.append(annouth)
+        description_list.append(str(item[0]))
+        description_list.append(description)
+    sales_list.append(title_list)
+    sales_list.append(description_list)
     return sales_list
-#     print(sales_list[:]['title'])
-# get_data()
-
-
-

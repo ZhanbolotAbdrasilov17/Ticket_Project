@@ -12,21 +12,21 @@ def make_requests():
     return r.content
 
 
-def get_data():
+def get_data_3():
     html = make_requests()
     soup = BeautifulSoup(html, 'html.parser')
     divs = soup.find('div', class_='page-container page-stocks')
     title = divs.find_all('div', class_='stock-wrapper')
     sales_list = []
-    for item in title:
-        annouth = item.find('span', class_='stock-title').text
-        description = item.find('div', class_='descr-container').text
-        sales_list.append({
-            "title":annouth,
-            "description": description,
-        })
-        print(annouth) 
-        print(description)
-    print(sales_list)
-get_data()
-    # return sales_list
+    title_list = []
+    description_list = []
+    for item in enumerate(title, 1):
+        annouth = item[1].find('span', class_='stock-title').text
+        description = item[1].find('div', class_='descr-container').text
+        title_list.append(str(item[0]))
+        title_list.append(annouth)
+        description_list.append(str(item[0]))
+        description_list.append(description)
+    sales_list.append(title_list)
+    sales_list.append(description_list)
+    return sales_list
