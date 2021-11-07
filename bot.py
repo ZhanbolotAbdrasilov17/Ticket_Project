@@ -27,21 +27,25 @@ def start(message):
 def echo(call):
     sales_list = get_data()
     title = sales_list[0]
-    text = ' \n'.join(title)
+    text = 'Акции \U0001f600'
     markup = types.InlineKeyboardMarkup(row_width = 1)
     items = types.InlineKeyboardButton('Описание', callback_data='dodo_description')
     markup.add(items)
-    bot.edit_message_text(chat_id = call.message.chat.id, text = text, message_id=call.message.message_id, reply_markup=markup)
+    bot.edit_message_text(chat_id = call.message.chat.id,text= text, message_id=call.message.message_id)
+    bot.send_photo(call.message.chat.id, photo=sales_list[3])
+    bot.send_message(call.message.chat.id, text = ' \n'.join(title), reply_markup=markup)
 
 @bot.callback_query_handler(func =lambda call: call.data == 'imperia')
 def echo1(call):
     sales_list = get_data1()
     title = sales_list[0]
-    text = ' \n'.join(title)
+    text = 'Акции \U0001f600'
     markup = types.InlineKeyboardMarkup(row_width = 1)
     items = types.InlineKeyboardButton('Описание', callback_data='imperia_description')
     markup.add(items)
-    bot.edit_message_text(chat_id = call.message.chat.id, text = text, message_id=call.message.message_id, reply_markup=markup)
+    bot.edit_message_text(chat_id = call.message.chat.id,text= text, message_id=call.message.message_id)
+    bot.send_photo(call.message.chat.id, photo=sales_list[2])
+    bot.send_message(call.message.chat.id, text = ' \n'.join(title), reply_markup=markup)
 
 @bot.callback_query_handler(func =lambda call: True)
 def callback_inline(call):
