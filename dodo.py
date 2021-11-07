@@ -32,6 +32,5 @@ def get_data():
     sales_list.append(title_list)
     sales_list.append(description_list)
     return sales_list
-    # print(sales_list[1])
 
-# get_data()
+

@@ -27,8 +27,3 @@ def get_data1():
     sales_list.append(title_list)
     sales_list.append(description_list)
     return sales_list
-    # print(sales_list[0])
-
-# get_data1()
-
-
