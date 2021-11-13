@@ -2,15 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# def get_html(url):
-#     response = requests.get(url)
-#     return response.text
-
 def make_requests():
     html="https://sushiwok.kg/bishkek/akcii/"
     r = requests.get(html)
     return r.content
-
 
 def get_data_3():
     html = make_requests()
