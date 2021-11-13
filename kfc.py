@@ -1,18 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-
-# def get_html(url):
-#     response = requests.get(url)
-#     return response.text
-
 def make_requests():
     html="https://kfc.kg/promo"
     r = requests.get(html)
     return r.content
 
 
-def get_data_2():
+def get_data3():
     html = make_requests()
     soup = BeautifulSoup(html, 'html.parser')
     divs = soup.find('div', class_='main-content-inr group')
@@ -20,8 +15,7 @@ def get_data_2():
     sales_list = []
     title_list = []
     description_list = []
-    photo_list_1 = open('logokfc.jpeg', 'rb')
-    photo_list_2 = open('kfc.jpeg', 'rb')
+    photo = open('logokfc.jpeg', 'rb')
 
     for item in enumerate(title, 1):
         annouth = item[1].find('h2', class_='title').text
@@ -32,6 +26,5 @@ def get_data_2():
         description_list.append(full_description)
     sales_list.append(title_list)
     sales_list.append(description_list)
-    sales_list.append(photo_list_1)
-    sales_list.append(photo_list_2)
+    sales_list.append(photo)
     return sales_list
